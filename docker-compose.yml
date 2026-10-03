@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./src/backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src/backend:/app
+      - huggingface-cache:/huggingface
+    environment:
+      - HF_HOME=/huggingface
+
+  frontend:
+    build:
+      context: ./src/frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  huggingface-cache:

@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+.venv
+venv
+.cache
+huggingface
+models
+*.safetensors
+*.ckpt
+.git
